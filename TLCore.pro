@@ -1,5 +1,5 @@
 TEMPLATE = lib
 
-CONFIG += staticlib qt warn_on
+CONFIG += qt warn_on
 
 include(config.pri)
