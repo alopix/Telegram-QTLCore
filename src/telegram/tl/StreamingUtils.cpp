@@ -29,23 +29,35 @@ void StreamingUtils::writeByte(char v, QDataStream& stream) {
 
 void StreamingUtils::writeInt(int v, QDataStream& stream) {
 	//qDebug() << "StreamingUtils::writeInt" << endl;
-	writeByte((v & 0xFF), stream);
-	writeByte(((v >> 8) & 0xFF), stream);
-	writeByte(((v >> 16) & 0xFF), stream);
-	writeByte(((v >> 24) & 0xFF), stream);
+	QDataStream::ByteOrder oldOrder = stream.byteOrder();
+	stream.setByteOrder(QDataStream::LittleEndian);
+	stream << v;
+	stream.setByteOrder(oldOrder);
+
+	// "Old" implementation:
+	//writeByte((v & 0xFF), stream);
+	//writeByte(((v >> 8) & 0xFF), stream);
+	//writeByte(((v >> 16) & 0xFF), stream);
+	//writeByte(((v >> 24) & 0xFF), stream);
 }
 
 void StreamingUtils::writeLong(qlonglong v, QDataStream& stream) {
 	//qDebug() << "StreamingUtils::writeLong" << endl;
-	writeByte((v & 0xFF), stream);
-	writeByte(((v >> 8) & 0xFF), stream);
-	writeByte(((v >> 16) & 0xFF), stream);
-	writeByte(((v >> 24) & 0xFF), stream);
+	QDataStream::ByteOrder oldOrder = stream.byteOrder();
+	stream.setByteOrder(QDataStream::LittleEndian);
+	stream << v;
+	stream.setByteOrder(oldOrder);
 
-	writeByte(((v >> 32) & 0xFF), stream);
-	writeByte(((v >> 40) & 0xFF), stream);
-	writeByte(((v >> 48) & 0xFF), stream);
-	writeByte(((v >> 56) & 0xFF), stream);
+	// "Old" implementation:
+	//writeByte((v & 0xFF), stream);
+	//writeByte(((v >> 8) & 0xFF), stream);
+	//writeByte(((v >> 16) & 0xFF), stream);
+	//writeByte(((v >> 24) & 0xFF), stream);
+	//
+	//writeByte(((v >> 32) & 0xFF), stream);
+	//writeByte(((v >> 40) & 0xFF), stream);
+	//writeByte(((v >> 48) & 0xFF), stream);
+	//writeByte(((v >> 56) & 0xFF), stream);
 }
 
 void StreamingUtils::writeDouble(double v, QDataStream& stream) {
