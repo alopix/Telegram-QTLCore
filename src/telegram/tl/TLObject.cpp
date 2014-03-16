@@ -15,7 +15,7 @@
 namespace telegram {
 namespace tl {
 
-QByteArray TLObject::serialize() {
+QByteArray TLObject::serialize() const {
 	QByteArray bytes;
 	QDataStream stream(&bytes, QIODevice::WriteOnly);
 	stream.setByteOrder(QDataStream::LittleEndian);
@@ -23,7 +23,7 @@ QByteArray TLObject::serialize() {
 	return bytes;
 }
 
-void TLObject::serialize(QDataStream& stream) {
+void TLObject::serialize(QDataStream& stream) const {
 	StreamingUtils::writeInt(classId(), stream);
 	serializeBody(stream);
 }
@@ -39,7 +39,7 @@ void TLObject::deserialize(QDataStream& stream, TLContext* context) {
 	deserializeBody(stream, context);
 }
 
-void TLObject::serializeBody(QDataStream& stream) {
+void TLObject::serializeBody(QDataStream& stream) const {
 	Q_UNUSED(stream)
 }
 

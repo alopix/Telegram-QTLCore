@@ -63,7 +63,7 @@ public:
 	QVariant& operator[](int i);
 
 	// TLObject
-	virtual void serializeBody(QDataStream& stream);
+	virtual void serializeBody(QDataStream& stream) const;
 	virtual void deserializeBody(QDataStream& stream, TLContext* context);
 
 private:

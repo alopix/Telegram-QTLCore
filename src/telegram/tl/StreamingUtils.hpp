@@ -32,13 +32,13 @@ public:
 	static void writeLong(qlonglong v, QDataStream& stream);
 	static void writeDouble(double v, QDataStream& stream);
 	static void writeByteArray(const char* v, int size, QDataStream& stream);
-	static void writeByteArray(QByteArray& v, QDataStream& stream);
+	static void writeByteArray(const QByteArray& v, QDataStream& stream);
 	static void writeTLBool(bool v, QDataStream& stream);
-	static void writeTLString(QString v, QDataStream& stream);
-	static void writeTLBytes(QByteArray& v, QDataStream& stream);
-	static void writeTLObject(TLObject* v, QDataStream& stream);
-	static void writeTLMethod(TLMethod* v, QDataStream& stream);
-	static void writeTLVector(TLVector* v, QDataStream& stream);
+	static void writeTLString(const QString v, QDataStream& stream);
+	static void writeTLBytes(const QByteArray& v, QDataStream& stream);
+	static void writeTLObject(const TLObject* v, QDataStream& stream);
+	static void writeTLMethod(const TLMethod* v, QDataStream& stream);
+	static void writeTLVector(const TLVector* v, QDataStream& stream);
 
 	static int readByte(QDataStream& stream);
 	static int readInt(QDataStream& stream);

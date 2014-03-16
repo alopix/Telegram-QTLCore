@@ -12,7 +12,7 @@
 namespace telegram {
 namespace tl {
 
-void TLGzipObject::serializeBody(QDataStream& stream) {
+void TLGzipObject::serializeBody(QDataStream& stream) const {
 	StreamingUtils::writeTLBytes(mPackedData, stream);
 }
 

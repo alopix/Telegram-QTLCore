@@ -72,7 +72,7 @@ void StreamingUtils::writeByteArray(const char* v, int size,
 	stream.writeRawData(v, size);
 }
 
-void StreamingUtils::writeByteArray(QByteArray& v, QDataStream& stream) {
+void StreamingUtils::writeByteArray(const QByteArray& v, QDataStream& stream) {
 	//qDebug() << "StreamingUtils::writeByteArray" << endl;
 	stream.writeRawData(v.constData(), v.size());
 }
@@ -86,13 +86,13 @@ void StreamingUtils::writeTLBool(bool v, QDataStream& stream) {
 	}
 }
 
-void StreamingUtils::writeTLString(QString v, QDataStream& stream) {
+void StreamingUtils::writeTLString(const QString v, QDataStream& stream) {
 	//qDebug() << "StreamingUtils::writeTLString" << endl;
 	QByteArray utf = v.toUtf8();
 	writeTLBytes(utf, stream);
 }
 
-void StreamingUtils::writeTLBytes(QByteArray& v, QDataStream& stream) {
+void StreamingUtils::writeTLBytes(const QByteArray& v, QDataStream& stream) {
 	//qDebug() << "StreamingUtils::writeTLBytes" << endl;
 	int startOffset = 1;
 	if (v.size() >= 254) {
@@ -116,17 +116,17 @@ void StreamingUtils::writeTLBytes(QByteArray& v, QDataStream& stream) {
 	}
 }
 
-void StreamingUtils::writeTLObject(TLObject* v, QDataStream& stream) {
+void StreamingUtils::writeTLObject(const TLObject* v, QDataStream& stream) {
 	//qDebug() << "StreamingUtils::writeTLObject" << endl;
 	v->serialize(stream);
 }
 
-void StreamingUtils::writeTLMethod(TLMethod* v, QDataStream& stream) {
+void StreamingUtils::writeTLMethod(const TLMethod* v, QDataStream& stream) {
 	//qDebug() << "StreamingUtils::writeTLMethod" << endl;
 	writeTLObject(v, stream);
 }
 
-void StreamingUtils::writeTLVector(TLVector* v, QDataStream& stream) {
+void StreamingUtils::writeTLVector(const TLVector* v, QDataStream& stream) {
 	//qDebug() << "StreamingUtils::writeTLVector" << endl;
 	writeTLObject(v, stream);
 }

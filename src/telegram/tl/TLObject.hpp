@@ -33,11 +33,11 @@ public:
 
 	virtual int classId() const = 0;
 
-	QByteArray serialize();
-	void serialize(QDataStream& stream);
+	QByteArray serialize() const;
+	void serialize(QDataStream& stream) const;
 	void deserialize(QDataStream& stream, TLContext* context);
 
-	virtual void serializeBody(QDataStream& stream);
+	virtual void serializeBody(QDataStream& stream) const;
 	virtual void deserializeBody(QDataStream& stream, TLContext* context);
 };
 

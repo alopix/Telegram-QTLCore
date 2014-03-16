@@ -49,7 +49,7 @@ QVariant& TLVector::operator[](int i) {
 	return mItems[i];
 }
 
-void TLVector::serializeBody(QDataStream& stream) {
+void TLVector::serializeBody(QDataStream& stream) const {
 	StreamingUtils::writeInt(mItems.length(), stream);
 	if (mDestinationClass == QMetaType::Int) {
 		foreach (QVariant v,mItems)
